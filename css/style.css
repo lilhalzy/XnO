@@ -30,6 +30,7 @@ body {
     align-items: center;
 }
 
+/* MOBILE-FIRST APPROACH */
 .main {
     display: grid;
     grid-template-columns: repeat(3, 80px);
@@ -53,4 +54,41 @@ body {
 
 .actions {
     background: paleturquoise;
+}
+
+/* FOOTER */
+footer {
+    color: var(--lavender);
+    margin:50px 0 0;
+}
+
+footer p {
+    margin: 10px 0 0;
+    text-align: center;
+    user-select: none;
+    font-style: italic;
+    font-weight: 200;
+    opacity: 20%;
+}
+
+footer p:hover {
+    opacity: 30%;
+}
+
+/* MEDIA - Tablet */
+@media (min-width: 576px) { 
+    .main {
+        grid-template-columns: repeat(3, 150px);
+        grid-template-rows: 50px repeat(3, 150px) 60px;
+        gap: 20px;
+    }
+}
+
+/* MEDIA - Desktop */
+@media (min-width: 817px) {
+    .main {
+        grid-template-columns: repeat(3, 210px);
+        grid-template-rows: 50px repeat(3, 210px) 60px;
+        gap: 20px;
+    }
 }
