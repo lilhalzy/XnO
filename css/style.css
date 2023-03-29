@@ -30,18 +30,65 @@ body {
     align-items: center;
 }
 
+.hidden {
+    display: none !important;
+}
+
+.shadow {
+    box-shadow: rgba(0,0,0,0.4) 0px 2px 4px,
+    rgba(0,0,0,0.3) 0px 7px 13px -3px,
+    rgba(0,0,0,0.2) 0px -3px 0px inset;
+}
+
 /* MOBILE-FIRST APPROACH */
 .main {
     display: grid;
     grid-template-columns: repeat(3, 80px);
-    grid-template-rows: 50px repeat(3, 80px) 60px;
+    grid-template-rows: 30px repeat(3, 80px) 60px;
     gap: 10px;
 }
 
 .turn {
-    background: red;
+    color: var(--violet);
     grid-column-start: 1;
     grid-column-end: 3;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.turn i {
+    font-size: 1.8rem;
+    margin: 0 0 0 .3rem;
+    animation: .6s ease-in-out turn-icon-animate;
+}
+
+@keyframes turn-icon-animate {
+    0%{
+        transform: scale(1);
+    }
+    25%{
+        transform: scale(1.4);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.turn p {
+    font-size: 1rem;
+    animation: .6s ease-in-out turn-txt-animate;
+}
+
+@keyframes turn-txt-animate {
+    0%{
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100%{
+        opacity: 100%;
+    }
 }
 
 .box {
@@ -51,9 +98,45 @@ body {
 .score {
     background: blanchedalmond;
 }
-
+/* dropdown */
 .actions {
-    background: paleturquoise;
+    position: relative;
+}
+
+.items {
+    position: absolute;
+    z-index: 10;
+    top: 40px;
+    left: 0;
+    background: var(--gray);
+    border-radius: .2rem;
+    padding: 10px;
+}
+
+.items button {
+    font-size: .8rem;
+    background: transparent;
+    padding: 8px;
+    color: var(--lavender);
+    display: flex;
+    flex-direction: column;
+}
+
+.actions .items button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.menu-btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: .4rem;
+    background: var(--gray);
+    color: var(--lavender);
+    border: 1px solid transparent;
 }
 
 /* FOOTER */

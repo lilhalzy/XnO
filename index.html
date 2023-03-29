@@ -5,14 +5,30 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./css/style.css">
+        <script src="https://kit.fontawesome.com/2b8060f7fc.js" crossorigin="anonymous"></script>
         <script src="js/app.js" defer></script>
     <title>XnO</title>
   </head>
   <body>
     <main>
         <div class="main">
-          <div class="turn"></div>
-          <div class="actions"></div>
+          <!-- indicator -->
+          <div class="turn">
+            <i class="fa-solid fa-x lavender"></i>
+            <p>Player X, it's your turn</p>
+          </div>
+          <!-- dropdown -->
+          <div class="actions">
+            <button class="menu-btn" data-id="menu-button">Actions
+              <i class="fa-regular fa-chevron-up"></i>
+            </button>
+            <div class="items border hidden" data-id="menu-pop">
+              <button data-id="reset-btn">Reset</button>
+              <button data-id="new-round-btn">New Round</button>
+            </div>
+          </div>
+
+          <!-- game -->
           <div class="box"></div>
           <div class="box"></div>
           <div class="box"></div>
@@ -22,6 +38,8 @@
           <div class="box"></div>
           <div class="box"></div>
           <div class="box"></div>
+
+          <!-- score -->
           <div class="score"></div>
           <div class="score"></div>
           <div class="score"></div>
