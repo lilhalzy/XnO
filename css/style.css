@@ -30,6 +30,12 @@ body {
     align-items: center;
 }
 
+/* utils */
+.box:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
 .hidden {
     display: none !important;
 }
@@ -44,7 +50,7 @@ body {
 .main {
     display: grid;
     grid-template-columns: repeat(3, 80px);
-    grid-template-rows: 30px repeat(3, 80px) 60px;
+    grid-template-rows: 30px repeat(3, 80px) 50px;
     gap: 10px;
 }
 
@@ -92,12 +98,30 @@ body {
 }
 
 .box {
-    background: yellow;
+    width: 100%;
+    height: 100%;
+    border-radius: .4rem;
+    background: var(--rose-quartz);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
 }
 
+
 .score {
-    background: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: .4rem;
 }
+
+.score p {
+    font-size: .8rem;
+    font-weight: 600;
+}
+
 /* dropdown */
 .actions {
     position: relative;
