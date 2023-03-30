@@ -18,26 +18,26 @@
             <p>Player X, it's your turn</p>
           </div>
           <!-- dropdown -->
-          <div class="actions">
-            <button class="menu-btn" data-id="menu-button">Actions
+          <div class="actions" data-id="actions">
+            <button class="action-btn" data-id="action-button">Actions
               <i class="fa-regular fa-chevron-up"></i>
             </button>
-            <div class="items border hidden" data-id="menu-pop">
+            <div class="items border hidden" data-id="action-pop">
               <button data-id="reset-btn">Reset</button>
               <button data-id="new-round-btn">New Round</button>
             </div>
           </div>
 
           <!-- game -->
-          <div class="box shadow"></div>
-          <div class="box shadow"></div>
-          <div class="box shadow"></div>
-          <div class="box shadow"></div>
-          <div class="box shadow"></div>
-          <div class="box shadow"></div>
-          <div class="box shadow"></div>
-          <div class="box shadow"></div>
-          <div class="box shadow"></div>
+          <div class="box shadow" id="1" data-id="box"></div>
+          <div class="box shadow" id="2" data-id="box"></div>
+          <div class="box shadow" id="3" data-id="box"></div>
+          <div class="box shadow" id="4" data-id="box"></div>
+          <div class="box shadow" id="5" data-id="box"></div>
+          <div class="box shadow" id="6" data-id="box"></div>
+          <div class="box shadow" id="7" data-id="box"></div>
+          <div class="box shadow" id="8" data-id="box"></div>
+          <div class="box shadow" id="9" data-id="box"></div>
 
           <!-- score -->
           <div class="score shadow" style="background: var(--violet);">
@@ -65,7 +65,7 @@
     </footer>
 
     <!-- Game over modal -->
-    <div class="modal">
+    <div class="modal hidden">
       <div class="modal-contents">
         <p>Player X wins!</p>
         <button>Play again</button>
