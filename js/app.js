@@ -7,7 +7,7 @@ const App = { //This is NameSpace
         boxes: document.querySelectorAll('[data-id="box"]'),
     },
     state: {
-        currentPlayer: 1,
+        turns: [],
     },
     init() { //init() - apply the registeredEL (more organized rather than declaring the even listener inside the init method)
         App.registerEventListeners()
@@ -24,14 +24,29 @@ const App = { //This is NameSpace
         })
         App.$.boxes.forEach(box => {
             box.addEventListener('click', e => {
-                box.hasChildNodes() ? null : void(0)
+                // check if it's played
+                const hasTurn = boxId => {
+                    const existingTurn = App.state.turns.find(turn => turn.boxId === boxId)
+                    return existingTurn !== undefined
+                }
+
+                if(hasTurn(+box.id)) {
+                    return
+                }
+
+                const lastTurn = App.state.turns.at(-1) // at(-1) will grab the last element of that array
 
                 const icon = document.createElement('i')
-                const currentPlayer = App.state.currentPlayer
+
+                const getOppositePlayer = playerId => playerId === 1 ? 2 : 1
+                const currentPlayer = App.state.turns.length === 0 ? 1 : getOppositePlayer(lastTurn.playerId)
 
                 currentPlayer === 1 ? icon.classList.add('fa-solid', 'fa-x', 'violet') : icon.classList.add('fa-solid', 'fa-o', 'lavender')
 
-                App.state.currentPlayer = App.state.currentPlayer === 1 ? 2 : 1
+                App.state.turns.push({  // Tracking state over the lifecycle app
+                    boxId: +box.id,
+                    playerId: currentPlayer,
+                })
 
                 box.replaceChildren(icon)
             })
