@@ -24,14 +24,16 @@ const App = { //This is NameSpace
         })
         App.$.boxes.forEach(box => {
             box.addEventListener('click', e => {
+                box.hasChildNodes() ? null : void(0)
+
                 const icon = document.createElement('i')
                 const currentPlayer = App.state.currentPlayer
 
-                currentPlayer === 1 ?                 icon.classList.add('fa-solid', 'fa-x', 'violet') : icon.classList.add('fa-solid', 'fa-o', 'lavender')
+                currentPlayer === 1 ? icon.classList.add('fa-solid', 'fa-x', 'violet') : icon.classList.add('fa-solid', 'fa-o', 'lavender')
 
                 App.state.currentPlayer = App.state.currentPlayer === 1 ? 2 : 1
 
-                e.target.replaceChildren(icon)
+                box.replaceChildren(icon)
             })
         })
     },
