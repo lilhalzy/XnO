@@ -6,6 +6,9 @@ const App = { //This is NameSpace
         newRoundBtn: document.querySelector('[data-id="new-round-btn"]'),
         boxes: document.querySelectorAll('[data-id="box"]'),
     },
+    state: {
+        currentPlayer: 1,
+    },
     init() { //init() - apply the registeredEL (more organized rather than declaring the even listener inside the init method)
         App.registerEventListeners()
     },
@@ -21,7 +24,14 @@ const App = { //This is NameSpace
         })
         App.$.boxes.forEach(box => {
             box.addEventListener('click', e => {
-                console.log(`boxes with id of ${e.target.id} was clicked`)
+                const icon = document.createElement('i')
+                const currentPlayer = App.state.currentPlayer
+
+                currentPlayer === 1 ?                 icon.classList.add('fa-solid', 'fa-x', 'violet') : icon.classList.add('fa-solid', 'fa-o', 'lavender')
+
+                App.state.currentPlayer = App.state.currentPlayer === 1 ? 2 : 1
+
+                e.target.replaceChildren(icon)
             })
         })
     },
