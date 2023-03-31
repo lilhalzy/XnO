@@ -14,7 +14,6 @@
     margin: 0;
     list-style: none;
     border: none;
-    font-family: 'Monserrat', sans-serif;
 }
 
 html,
@@ -31,6 +30,16 @@ body {
 }
 
 /* utils */
+.violet {
+    color: var(--violet);
+    text-shadow: 0px 5px 5px rgba(66, 70, 77, 0.6);
+}
+
+.lavender {
+    color: var(--lavender);
+    text-shadow: 0px 5px 5px rgba(66, 70, 77, 0.6);
+}
+
 .box:hover {
     cursor: pointer;
     opacity: 90%;
@@ -62,6 +71,7 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
+    font-family: 'Monserrat', sans-serif;
 }
 
 .turn i {
@@ -105,7 +115,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 
@@ -115,6 +125,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: .4rem;
+    font-family: 'Monserrat', sans-serif;
 }
 
 .score p {
