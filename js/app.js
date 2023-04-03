@@ -5,6 +5,9 @@ const App = { //This is NameSpace
         resetBtn: document.querySelector('[data-id="reset-btn"]'),
         newRoundBtn: document.querySelector('[data-id="new-round-btn"]'),
         boxes: document.querySelectorAll('[data-id="box"]'),
+        modal: document.querySelector('[data-id="modal"]'),
+        modalTxt: document.querySelector('[data-id="modal-txt"]'),
+        modalBtn: document.querySelector('[data-id="modal-btn"]'),
     },
     state: {
         turns: [],
@@ -52,6 +55,11 @@ const App = { //This is NameSpace
         App.$.newRoundBtn.addEventListener('click', e => {
             console.log('new round')
         })
+        App.$.modalBtn.addEventListener('click', e => {
+            App.state.turns = []
+            App.$.boxes.forEach(box => box.replaceChildren())
+            App.$.modal.classList.add('hidden')
+        })
         App.$.boxes.forEach(box => {
             box.addEventListener('click', e => {
                 // check if it's played
@@ -84,11 +92,17 @@ const App = { //This is NameSpace
                 const game = App.gameTracker(App.state.turns)
 
                 if (game.result === 'complete') {
+                    App.$.modal.classList.remove('hidden')
+
+                    let msg = ''
                     if (game.winner) {
-                        alert (`Player ${game.winner} wins!`)
+                        msg = `Player ${game.winner} wins!`
+                        App.$.modalBtn.textContent = "One more"
                     } else {
-                        alert (`Tie!`)
+                        msg = 'Tie game!'
+                        App.$.modalBtn.textContent = "Don't give up"
                     }
+                    App.$.modalTxt.textContent = msg
                 }
             })
         })
