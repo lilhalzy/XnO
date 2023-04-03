@@ -1,3 +1,5 @@
+import View from './view.js'
+
 const App = { //This is NameSpace
     $: { // start with a custom prefix ($) - All selected HTML elements
         action: document.querySelector('[data-id="actions"]'),
@@ -118,4 +120,20 @@ const App = { //This is NameSpace
     },
 }
 
-window.addEventListener('load', App.init)
+function init() {
+    const view = new View()
+    view.bindResetEvent(e => {
+        console.log('Reset Button') 
+        console.log(e)
+    })
+    view.bindNewRoundEvent(e => {
+        console.log('New Round Event') 
+        console.log(e)
+    })
+    view.bindPlayerTurnEvent(e => {
+        console.log('Player Turn Event') 
+        console.log(e)
+    })
+}
+
+window.addEventListener('load', init)
