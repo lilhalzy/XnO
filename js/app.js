@@ -8,13 +8,15 @@ const App = { //This is NameSpace
         modal: document.querySelector('[data-id="modal"]'),
         modalTxt: document.querySelector('[data-id="modal-txt"]'),
         modalBtn: document.querySelector('[data-id="modal-btn"]'),
+        turn: document.querySelector('[data-id="turn"]'),
     },
     state: {
         turns: [],
     },
     gameTracker(turns) {
-        const p1Turns = turns.filter(turn => turn.playerId === 1).map(move => +move.boxId)
-        const p2Turns = turns.filter(turn => turn.playerId === 2).map(move => +move.boxId)
+        const p1Turns = turns.filter(turn => turn.playerId === 'X').map(move => +move.boxId)
+        const p2Turns = turns.filter(turn => turn.playerId === 'O').map(move => +move.boxId)
+        console.log();
 
         const victoryTracker = [
             [1,2,3], 
@@ -74,19 +76,26 @@ const App = { //This is NameSpace
 
                 const lastTurn = App.state.turns.at(-1) // at(-1) will grab the last element of that array
                 
-                const icon = document.createElement('i')
+                const getOppositePlayer = playerId => playerId === 'X' ? 'O' : 'X'
+                const currentPlayer = App.state.turns.length === 0 ? 'X' : getOppositePlayer(lastTurn.playerId)
+                const nextPlayer = getOppositePlayer(currentPlayer)
                 
-                const getOppositePlayer = playerId => playerId === 1 ? 2 : 1
-                const currentPlayer = App.state.turns.length === 0 ? 1 : getOppositePlayer(lastTurn.playerId)
+                const boxIcon = document.createElement('i')
+                const indicatorIcon = document.createElement('i')
+                const indicatorLabel = document.createElement('p')
+                indicatorLabel.innerText = `Player ${nextPlayer} it's your turn`
                 
-                currentPlayer === 1 ? icon.classList.add('fa-solid', 'fa-x', 'violet') : icon.classList.add('fa-solid', 'fa-o', 'lavender')
+                // placement and indicator text
+                currentPlayer === 'X' ? (boxIcon.classList.add('fa-solid', 'fa-x', 'violet'), indicatorIcon.classList.add('fa-solid', 'fa-o', 'lavender'), indicatorLabel.innerText = `Player ${nextPlayer} it's your turn`, indicatorLabel.classList = 'lavender' ): (boxIcon.classList.add('fa-solid', 'fa-o', 'lavender'), indicatorIcon.classList.add('fa-solid', 'fa-x', 'violet'))
+
+                App.$.turn.replaceChildren(indicatorIcon, indicatorLabel)
                 
                 App.state.turns.push({  // Tracking state over the lifecycle app
                     boxId: +box.id,
                     playerId: currentPlayer,
                 })
                 
-                box.replaceChildren(icon)
+                box.replaceChildren(boxIcon)
 
                 // check if there's a winner || tie
                 const game = App.gameTracker(App.state.turns)
