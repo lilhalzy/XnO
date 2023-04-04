@@ -46,6 +46,38 @@ export default class View {
     /**
      * DOM helper methods
      */
+    #toggleItems() {
+        this.$.actionItems.classList.toggle('hidden')
+        this.$.actionBtn.classList.toggle('border')
+
+        const icon = this.$.actionBtn.querySelector('i')
+
+        icon.classList.add('fa-chevron-down')
+        icon.classList.add('fa-chevron-up')
+    }
+
+    handlePlayerTurn(boxEl, player) {
+        const icon = document.createElement('i')
+        icon.classList.add('fa-solid',
+         player === 'X' ? 'fa-x' : 'fa-o',
+         player === 'X' ? 'violet' : 'lavender'
+         )
+        boxEl.replaceChildren(icon)
+    }
+
+    setTurnIndicator(player) {
+        const icon = document.createElement('i')
+        const label = document.createElement('p')
+
+        this.$.turn.classList.add(player === 'X' ? 'violet' : 'lavender')
+        this.$.turn.classList.remove(player === 'X' ? 'lavender' : 'violet')
+
+        icon.classList.add('fa-solid', player === 'X' ? 'fa-x' : 'fa-o')
+        
+        label.innerText = player === 'X' ? `Player X it's your turn` : `Player O it's your turn`
+
+        this.$.turn.replaceChildren(icon, label)
+    }
 
     // # - make it private || not public
     #qs(selector, parent) {
