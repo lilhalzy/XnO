@@ -131,8 +131,8 @@ function init() {
         console.log(e)
     })
     view.bindPlayerTurnEvent(e => {
-        console.log('Player Turn Event') 
-        console.log(e)
+        view.setTurnIndicator('X')
+        view.handlePlayerTurn(e.target, 1)
     })
 }
 
